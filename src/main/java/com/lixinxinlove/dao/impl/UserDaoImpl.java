@@ -23,6 +23,20 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+
+    @Override
+    public User findByUsernamePassword(String username, String password) {
+        User user = null;
+        try {
+            String sql = "select * from tab_user where username=? and password=?";
+            user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username,password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+
     @Override
     public User findByCode(String code) {
         User user = null;
@@ -60,5 +74,7 @@ public class UserDaoImpl implements UserDao {
         int i = jdbcTemplate.update(sql, user.getUid());
         return i;
     }
+
+
 
 }

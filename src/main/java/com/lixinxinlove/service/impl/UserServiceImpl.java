@@ -41,5 +41,11 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public User login(User user) {
+        User reUser = userDao.findByUsernamePassword(user.getUsername(), user.getPassword());
+        return reUser;
+    }
+
 
 }
