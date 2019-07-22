@@ -25,9 +25,9 @@
             if (rname) {
                 //url解码
                 rname = window.decodeURIComponent(rname);
+            }else {
+                rname = "";
             }
-            rname = "";
-
             //当页码加载完成后，调用load方法，发送ajax请求加载数据
             load(cid, null, rname);
         });
@@ -44,7 +44,7 @@
 
                 var lis = "";
 
-                var fristPage = '<li onclick="javascipt:load(' + cid + ',1,' + rname + ')"><a href="javascript:void(0)">首页</a></li>';
+                var fristPage = '<li onclick="javascipt:load(' + cid + ',1,\'' + rname + '\')"><a href="javascript:void(0)">首页</a></li>';
 
                 //计算上一页的页码
                 var beforeNum = pb.currentPage - 1;
@@ -52,7 +52,7 @@
                     beforeNum = 1;
                 }
 
-                var beforePage = '<li  onclick="javascipt:load(' + cid + ',' + beforeNum + ',' + rname + ')" class="threeword"><a href="javascript:void(0)">上一页</a></li>';
+                var beforePage = '<li  onclick="javascipt:load(' + cid + ',' + beforeNum + ',\'' + rname + '\')" class="threeword"><a href="javascript:void(0)">上一页</a></li>';
 
                 lis += fristPage;
                 lis += beforePage;
@@ -99,11 +99,11 @@
                     //判断当前页码是否等于i
                     if (pb.currentPage == i) {
 
-                        li = '<li class="curPage" onclick="javascipt:load(' + cid + ',' + i + ',' + rname + ')"><a href="javascript:void(0)">' + i + '</a></li>';
+                        li = '<li class="curPage" onclick="javascipt:load(' + cid + ',' + i + ',\'' + rname + '\')"><a href="javascript:void(0)">' + i + '</a></li>';
 
                     } else {
                         //创建页码的li
-                        li = '<li onclick="javascipt:load(' + cid + ',' + i + ',' + rname + ')"><a href="javascript:void(0)">' + i + '</a></li>';
+                        li = '<li onclick="javascipt:load(' + cid + ',' + i + ',\'' + rname + '\')"><a href="javascript:void(0)">' + i + '</a></li>';
                     }
                     //拼接字符串
                     lis += li;
