@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/route-detail.css">
-
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/getParameter.js"></script>
 
     <script>
-
 
         $(function () {
 
@@ -18,17 +18,23 @@
 
             $.get("route/findOne", {rid: rid}, function (data) {
 
+                alert(data);
+
+                var pros=' <p>经营商家 ：'+ data.seller.sname+'</p>' +
+                    '                <p>咨询电话 : '+ data.seller.consphone+'</p>' +
+                    '                <p>地址 ： '+ data.seller.address+'</p>';
+
+                $("#pros_other").html(pros);
 
 
+                $("#pros_title").html(data.rname);
 
             });
-
 
         });
 
 
     </script>
-
 
 </head>
 
@@ -41,7 +47,7 @@
         <a href="/">首页</a>
         <span> &gt;</span>
         <a href="#">国内游</a><span> &gt;</span>
-        <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+        <a href="#">全国-曼谷6-7天自由行 </a>
     </div>
     <div class="prosum_box">
         <dl class="prosum_left">
@@ -96,9 +102,9 @@
             </dd>
         </dl>
         <div class="prosum_right">
-            <p class="pros_title">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
+            <p class="pros_title"  id="pros_title">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
             <p class="hot">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-            <div class="pros_other">
+            <div class="pros_other"  id="pros_other">
                 <p>经营商家 ：Lee国旅</p>
                 <p>咨询电话 : 400-618-9090</p>
                 <p>地址 ： 三里屯SOHO</p>
@@ -153,6 +159,11 @@
 <!--导入布局js，共享header和footer-->
 <script type="text/javascript" src="js/include.js"></script>
 <script>
+
+
+
+
+
     $(document).ready(function () {
         //焦点图效果
         //点击图片切换图片
@@ -209,6 +220,12 @@
             $('.big_img').attr('src', big_pic);
         }
     }
+
+
+
+
+
+
 </script>
 </body>
 
